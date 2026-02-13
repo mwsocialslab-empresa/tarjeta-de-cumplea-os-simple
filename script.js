@@ -97,12 +97,19 @@ function resetButton() {
 // --- CONFIGURACIÓN Y SDK ---
 async function onConfigChange(config) {
     if (!config) return;
-    document.getElementById('nombre-cumpleanero').textContent = config.nombre_cumpleanero || defaultConfig.nombre_cumpleanero;
+    
+    // Cambiamos el texto pero NO el estilo de fuente aquí para que no rompa el CSS
+    const nombreEl = document.getElementById('nombre-cumpleanero');
+    if (nombreEl) {
+        nombreEl.textContent = config.nombre_cumpleanero || defaultConfig.nombre_cumpleanero;
+    }
+    
     document.getElementById('fecha').textContent = config.fecha_fiesta || defaultConfig.fecha_fiesta;
     document.getElementById('hora').textContent = config.hora_fiesta || defaultConfig.hora_fiesta;
     document.getElementById('lugar').textContent = config.lugar_fiesta || defaultConfig.lugar_fiesta;
     document.getElementById('direccion').textContent = config.direccion_fiesta || defaultConfig.direccion_fiesta;
     
+    // El fondo sí lo dejamos dinámico
     const app = document.getElementById('app');
     if (app) {
         const bgColor = config.background_color || defaultConfig.background_color;

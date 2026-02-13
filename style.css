@@ -1,6 +1,17 @@
-/* --- NUEVAS TIPOGRAFÍAS ADOLESCENTES --- */
+/* --- 1. VARIABLES Y BASE --- */
+:root {
+    --pink-primary: #ec4899;
+    --purple-primary: #a855f7;
+    --indigo-primary: #6366f1;
+}
 
-/* 1. Línea: Celebramos los */
+body {
+    background: linear-gradient(135deg, #fdf2f8 0%, #fae8ff 50%, #e0e7ff 100%);
+    overflow-x: hidden; /* Evita scroll lateral por los globos */
+}
+
+/* --- 2. TIPOGRAFÍAS ADOLESCENTES (FRONT) --- */
+
 .celebremos-style {
     font-family: 'Comfortaa', sans-serif !important;
     color: #6c757d !important;
@@ -10,7 +21,6 @@
     letter-spacing: 2px;
 }
 
-/* 2. Línea: El número 16 */
 .numero-style {
     font-family: 'Bangers', cursive !important;
     font-size: 5rem !important;
@@ -19,39 +29,35 @@
     line-height: 0.8;
 }
 
-/* 3. Línea: años de */
 .anios-style {
     font-family: 'Comfortaa', sans-serif !important;
     color: #a855f7 !important;
     font-size: 1.8rem !important;
-    font-weight: 700 !important;
-}
-
-
-/* Títulos de impacto (Fecha, Lugar, Confirmación) */
-h1, .title-font, #confirm-btn {
-    font-family: 'Bangers', system-ui !important;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-}
-
-/* Textos informativos generales */
-body, p, .detail-item, input {
-    font-family: 'Comfortaa', sans-serif;
     font-weight: 700;
 }
 
-/* --- RESTO DE TU ESTILO ORIGINAL (SIN TOCAR) --- */
-
-:root {
-    --pink-primary: #ec4899;
-    --purple-primary: #a855f7;
-    --indigo-primary: #6366f1;
+/* Solución para Pattaya en Móviles */
+#nombre-cumpleanero {
+    font-family: 'Pattaya', sans-serif !important;
+    font-size: 3.8rem !important;
+    background: linear-gradient(to right, #626fdd, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    font-weight: 400 !important;
+    white-space: nowrap;
+    filter: drop-shadow(2px 2px 0px rgba(255, 193, 227, 0.3));
 }
 
-body {
-    background: linear-gradient(135deg, #fdf2f8 0%, #fae8ff 50%, #e0e7ff 100%);
+@media (max-width: 450px) {
+    #nombre-cumpleanero { font-size: 2.8rem !important; }
+    .numero-style { font-size: 4rem !important; }
 }
+
+/* --- 3. DISEÑO DE TARJETA Y DETALLES --- */
 
 .invitation-card {
     border-radius: 2rem;
@@ -64,82 +70,37 @@ body {
     background: linear-gradient(90deg, var(--pink-primary), var(--purple-primary), var(--indigo-primary), var(--pink-primary));
 }
 
-.gradient-text {
-    background: linear-gradient(90deg, #ec4899, #a855f7, #6366f1);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.text-pink { color: var(--pink-primary); }
-.text-purple { color: var(--purple-primary); }
-.text-purple-muted { color: #a78bfa; }
-
 .bg-pink-light { background: linear-gradient(90deg, #fdf2f8, #fce7f3); }
 .bg-purple-light { background: linear-gradient(90deg, #f5f3ff, #ede9fe); }
 .bg-indigo-light { background: linear-gradient(90deg, #eef2ff, #e0e7ff); }
 
 .icon-circle {
-    width: 40px;
-    height: 40px;
-    background: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 40px; height: 40px;
+    background: white; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
     font-size: 1.2rem;
 }
 
-.form-box { background-color: #f9fafb; border: 1px dashed #e5e7eb; }
+/* --- 4. FORMULARIO Y BOTONES --- */
 
 .btn-primary-custom {
     background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #6366f1 100%);
     color: white;
+    border: none;
     transition: transform 0.3s ease;
 }
 
-.shimmer {
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-    background-size: 200% 100%;
-    animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
-
-.btn-outline-primary {
-    color: #a855f7;
-    border-color: #a855f7;
-}
-
-.btn-outline-primary:hover {
-    background-color: #a855f7;
-    color: white;
-}
-
 .btn-qty {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border: 2px solid #a855f7;
-    background: transparent;
-    color: #a855f7;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 35px; height: 35px;
+    border-radius: 50%; border: 2px solid #a855f7;
+    background: transparent; color: #a855f7;
+    display: flex; align-items: center; justify-content: center;
     font-weight: bold;
 }
 
-/* --- GLOBOS --- */
-#balloons-container {
-    background: transparent;
-    pointer-events: none;
-}
+/* --- 5. ANIMACIONES: GLOBOS Y CONFETI --- */
 
+/* Globos de fondo */
 .balloon {
     position: absolute;
     bottom: -150px;
@@ -151,39 +112,35 @@ body {
 @keyframes floatUp {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
     10% { opacity: 0.6; }
-    90% { opacity: 0.6; }
     100% { transform: translateY(-130vh) rotate(20deg); opacity: 0; }
 }
-/* 4. Línea: ZOE (Usando Pattaya) */
-#nombre-cumpleanero {
-    font-family: 'Pattaya', sans-serif !important;
-    font-size: 4.5rem !important; /* Ajusta el tamaño a tu gusto */
-    background: linear-gradient(to right, #626fdd, #a855f7);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    display: inline-block;
-    margin-top: 5px;
-    letter-spacing: 1px;
-    font-weight: normal !important; /* Pattaya ya es gruesa de por sí */
-    filter: drop-shadow(2px 2px 0px rgba(255, 193, 227, 0.3));
-}
-/* Animación de caída para el confeti de confirmación */
+
+/* Confeti de Éxito (Caída hacia abajo) */
+.success-box { overflow: hidden; } /* Evita que el confeti se amontone arriba */
+
 @keyframes confetti-fall {
-    0% { 
-        transform: translateY(-50px) rotate(0deg); 
-        opacity: 1; 
-    }
-    100% { 
-        transform: translateY(300px) rotate(360deg); /* Ahora cae hacia abajo */
-        opacity: 0; 
-    }
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(400px) rotate(360deg); opacity: 0; }
 }
 
 .confetti-piece {
     position: absolute;
-    width: 8px;
-    height: 8px;
-    top: 0; /* Empieza desde la parte superior del cuadro de éxito */
-    animation: confetti-fall 2s ease-out forwards;
+    width: 8px; height: 8px;
+    top: 0;
+    border-radius: 50%;
+    animation: confetti-fall 2.5s ease-out forwards;
+}
+
+/* Shimmer del botón */
+.shimmer {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
 }
