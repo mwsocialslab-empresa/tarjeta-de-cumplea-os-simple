@@ -50,14 +50,17 @@ async function confirmAttendance() {
     }
 
     // 2. Configuración del mensaje
-    const miTelefono = "1127461954"; // <--- CAMBIA ESTO por tu número (con código de país, ej: 549 para Argentina)
-    const textoMensaje = `¡Hola! Soy ${name}. Confirmo mi asistencia al cumple de ZOE. 🎉\n\n` +
-                         `• Adultos: ${counts.adults}\n` +
-                         `• Menores: ${counts.kids}\n` +
-                         `• Total: ${1 + counts.adults + counts.kids}`;
+// 1. IMPORTANTE: Agregamos 54 y el 9 antes del 11 para Argentina
+        const miTelefono = "5491127461954"; 
 
-    // 3. Crear el enlace de WhatsApp
-    const url = `https://wa.me/${miTelefono}?text=${encodeURIComponent(textoMensaje)}`;
+        const textoMensaje = `¡Hola! Soy *${name}*. Confirmo mi asistencia al cumple de ZOE. 🎉\n\n` +
+                            `👥 *Adultos:* ${counts.adults}\n` +
+                            `🧒 *Menores:* ${counts.kids}\n` +
+                            `👨‍👩‍👧‍👦 *Total:* ${1 + counts.adults + counts.kids}`;
+
+        // El resto del código para abrir la URL se mantiene igual:
+        const url = `https://wa.me/${miTelefono}?text=${encodeURIComponent(textoMensaje)}`;
+        window.open(url, '_blank');
 
     // 4. Intentar guardar en el SDK (opcional, por si quieres tener la lista también en la web)
     if (window.dataSdk) {
@@ -143,3 +146,55 @@ function createConfetti() {
         container.appendChild(confetti);
     }
 }
+function createOneBalloon() {
+    const container = document.getElementById('balloons-container');
+    if (!container) return;
+
+    const balloon = document.createElement('div');
+    balloon.className = 'balloon';
+    
+    const colors = ['#ffc1e3', '#b28dff', '#85e3ff', '#fff9ae', '#aff8db', '#ff9aa2'];
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    
+    // Tamaño y posición aleatoria
+    const size = Math.random() * (70 - 40) + 40;
+    const startX = Math.random() * 100;
+    const duration = Math.random() * (15 - 10) + 10; // Más lento = más elegante
+    
+    balloon.style.left = `${startX}%`;
+    balloon.style.width = `${size}px`;
+    balloon.style.height = `${size * 1.3}px`;
+    balloon.style.backgroundColor = color;
+    balloon.style.color = color; // Para el triangulito del nudo
+    balloon.style.animationDuration = `${duration}s`;
+    
+    // Efecto de profundidad aleatorio (algunos borrosos)
+    if (Math.random() > 0.7) {
+        balloon.style.filter = 'blur(2px)';
+        balloon.style.zIndex = -2;
+    }
+
+    container.appendChild(balloon);
+
+    // Borrar el globo del código cuando termine de subir para no saturar la PC
+    setTimeout(() => {
+        balloon.remove();
+    }, duration * 1000);
+}
+
+// Iniciar la lluvia de globos
+function startBalloonRain() {
+    // Crear globos de inmediato para empezar
+    for(let i=0; i < 10; i++) {
+        setTimeout(createOneBalloon, Math.random() * 5000);
+    }
+    
+    // Seguir creando globos infinitamente cada 600ms
+    setInterval(createOneBalloon, 600);
+}
+
+// Llamar al inicio
+document.addEventListener('DOMContentLoaded', () => {
+    startBalloonRain();
+});
+

@@ -139,3 +139,59 @@ body {
 .btn-qty:active {
     transform: scale(0.9);
 }
+#balloons-container {
+    background: transparent;
+    pointer-events: none;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -150px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    opacity: 0.6;
+    animation: floatUp linear forwards; /* Cambiado a forwards para que no salten */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255,255,255,0.8);
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* El nudo del globo */
+.balloon::before {
+    content: "▲";
+    position: absolute;
+    bottom: -7px;
+    font-size: 10px;
+    color: inherit;
+    filter: brightness(0.9);
+}
+
+/* El hilo */
+.balloon::after {
+    content: "";
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    width: 1px;
+    height: 40px;
+    background: rgba(0,0,0,0.1);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translateY(-130vh) rotate(20deg);
+        opacity: 0;
+    }
+}
