@@ -205,3 +205,14 @@ document.addEventListener('DOMContentLoaded', () => {
     startBalloonRain();
 });
 
+// Evita el zoom por doble tap pero PERMITE el scroll
+document.addEventListener('touchend', function (event) {
+    let now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        // Solo prevenimos si el toque fue sobre un BOTÓN
+        if (event.target.tagName === 'BUTTON' || event.target.classList.contains('btn')) {
+            event.preventDefault();
+        }
+    }
+    lastTouchEnd = now;
+}, false);
