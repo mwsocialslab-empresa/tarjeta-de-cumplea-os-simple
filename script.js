@@ -23,15 +23,8 @@ function startBalloonRain() {
     }, 600);
 }
 
-// 3. CONTROL DE FECHA, PERSISTENCIA Y ARRANQUE
+// 3. CONTROL DE FECHA Y ARRANQUE (Se eliminó la persistencia de bloqueo)
 document.addEventListener('DOMContentLoaded', () => {
-    const yaConfirmo = localStorage.getItem('confirmado_zoe');
-    const nombreGuardado = localStorage.getItem('nombre_invitado');
-
-    if (yaConfirmo === 'true' && nombreGuardado) {
-        mostrarExitoDirecto(nombreGuardado);
-    }
-
     const fechaLimite = new Date(2026, 2, 8, 0, 0, 0); 
     const ahora = new Date();
 
@@ -82,14 +75,12 @@ function confirmAttendance() {
     const mensaje = `🥳 ¡Hola! Confirmo mi asistencia al cumple de Zoe. ✨%0A%0A*Nombre:* ${name}%0A*Somos en total:* %0A %0A👩‍🦰👨‍*Adultos:* ${adults} %0A🧒👧*Menores:* ${kids} `;
     const urlWhatsapp = `https://wa.me/${telefono}?text=${mensaje}`;
 
-    // 1. Guardar localmente
-    localStorage.setItem('confirmado_zoe', 'true');
-    localStorage.setItem('nombre_invitado', name);
+    if (errorMsg) errorMsg.classList.add('d-none');
     
-    // 2. Mostrar mensaje de éxito en la web
+    // Mostramos mensaje de éxito en la web (pero podrán volver atrás o refrescar para enviar otro)
     mostrarExitoDirecto(name);
 
-    // 3. Abrir WhatsApp para enviar el mensaje real
+    // Abrir WhatsApp para enviar el mensaje real
     window.open(urlWhatsapp, '_blank');
 }
 
