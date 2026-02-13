@@ -5,14 +5,13 @@
     --indigo-primary: #6366f1;
 }
 
-/* Permitimos scroll total en el cuerpo */
 body {
     background: linear-gradient(135deg, #fdf2f8 0%, #fae8ff 50%, #e0e7ff 100%);
     overflow-x: hidden;
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    /* Fuerza el scroll vertical en todo el documento */
+    /* Scroll vertical habilitado en toda la pantalla */
     touch-action: pan-y !important;
     -webkit-overflow-scrolling: touch;
 }
@@ -58,12 +57,21 @@ body {
     .numero-style { font-size: 4rem !important; }
 }
 
-/* --- 3. DISEÑO DE TARJETA (SCROLL HABILITADO AQUÍ) --- */
+/* --- 3. DISEÑO DE TARJETA --- */
+#app {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    touch-action: pan-y !important;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
 .invitation-card {
     border-radius: 2rem;
     background-color: white;
     box-shadow: 0 20px 60px rgba(236, 72, 153, 0.2);
-    /* IMPORTANTE: Esto permite que el dedo haga scroll al tocar la tarjeta */
     touch-action: pan-y !important;
     pointer-events: auto;
 }
@@ -88,6 +96,7 @@ body {
     background: linear-gradient(135deg, #ec4899 0%, #a855f7 50%, #6366f1 100%);
     color: white;
     border: none;
+    touch-action: manipulation !important;
 }
 
 .btn-qty {
@@ -95,11 +104,26 @@ body {
     border-radius: 50%; border: 2px solid #a855f7;
     background: transparent; color: #a855f7;
     font-weight: bold;
-    /* Los botones SI bloquean gestos para evitar zoom */
+    display: flex; align-items: center; justify-content: center;
     touch-action: manipulation !important;
 }
 
-/* --- 5. ANIMACIONES --- */
+input[type="text"] {
+    font-size: 16px !important;
+    touch-action: auto !important;
+    user-select: text !important;
+    -webkit-user-select: text !important;
+}
+
+/* --- 5. ANIMACIONES (GLOBOS Y CONFETI) --- */
+#balloons-container, #confetti-container {
+    pointer-events: none !important;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+}
+
 .balloon {
     position: absolute;
     bottom: -150px;
@@ -110,12 +134,8 @@ body {
 
 @keyframes floatUp {
     0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.6; }
     100% { transform: translateY(-130vh) rotate(20deg); opacity: 0; }
-}
-
-@keyframes confetti-fall {
-    0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
-    100% { transform: translateY(400px) rotate(360deg); opacity: 0; }
 }
 
 .confetti-piece {
@@ -124,36 +144,25 @@ body {
     animation: confetti-fall 2.5s ease-out forwards;
 }
 
-/* --- 6. EL ARREGLO MAESTRO PARA EL SCROLL --- */
-
-#app {
-    width: 100%;
-    min-height: 100vh;
-    /* Permite scroll en toda el área */
-    touch-action: pan-y !important; 
-    display: flex;
-    flex-direction: column;
+@keyframes confetti-fall {
+    0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(400px) rotate(360deg); opacity: 0; }
 }
 
-/* Los contenedores de los globos NO deben tocar tus dedos */
-#balloons-container, 
-#confetti-container {
-    pointer-events: none !important;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    z-index: -1;
-}
-
-/* Los inputs deben permitir el foco y scroll normal */
-input[type="text"] {
-    font-size: 16px !important;
-    touch-action: auto !important;
-    user-select: text !important;
-    -webkit-user-select: text !important;
-}
-
-/* Evitamos resaltado de texto pero permitimos interacción */
+/* --- 6. AJUSTES FINALES --- */
 * {
     -webkit-tap-highlight-color: transparent;
+}
+
+.shimmer {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
 }
