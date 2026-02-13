@@ -78,8 +78,8 @@ function confirmAttendance() {
     }
 
     // --- CONFIGURACIÓN DE WHATSAPP ---
-    const telefono = "5491160212516"; // <--- REEMPLAZA CON TU NÚMERO (Código de país + número sin el +)
-    const mensaje = `¡Hola! Confirmo mi asistencia al cumple de Zoe.%0A*Nombre:* ${name}%0A*En total somos* %0A*Adultos:* ${adults}%0A*Menores:* ${kids}`;
+    const telefono = "5491160212516"; 
+    const mensaje = `🥳 ¡Hola! Confirmo mi asistencia al cumple de Zoe. ✨%0A%0A*Nombre:* ${name}%0A*Somos tu familia:* 👨‍👩‍👧‍👦%0A%0A*Adultos:* ${adults} 👩‍🦰👨‍%0A*Menores:* ${kids} 🧒👧`;
     const urlWhatsapp = `https://wa.me/${telefono}?text=${mensaje}`;
 
     // 1. Guardar localmente
