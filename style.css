@@ -1,3 +1,30 @@
+/* El nombre "ZOE" con estilo elegante y cool */
+#nombre-cumpleanero {
+    font-family: 'Grand Hotel', cursive;
+    font-size: 4rem;
+    color: #a855f7; /* Púrpura moderno */
+    text-shadow: 2px 2px 0px #ffc1e3; /* Sombra rosa pastel */
+}
+
+/* Títulos de impacto (Fecha, Lugar, Confirmación) */
+h1, .title-font, #confirm-btn {
+    font-family: 'Bangers', system-ui;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+/* Textos informativos y botones (Legible y moderno) */
+body, p, .detail-item, input {
+    font-family: 'Comfortaa', sans-serif;
+    font-weight: 700; /* Negrita suave para que resalte */
+}
+#nombre-cumpleanero {
+    background: linear-gradient(to right, #a855f7, #ec4899);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
 /* Variables de Colores */
 :root {
     --pink-primary: #ec4899;
@@ -28,7 +55,8 @@ body {
 
 /* Tipografías y Colores */
 .gradient-text {
-    background-clip: linear-gradient(90deg, #ec4899, #a855f7, #6366f1);
+    background: linear-gradient(90deg, #ec4899, #a855f7, #6366f1);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
