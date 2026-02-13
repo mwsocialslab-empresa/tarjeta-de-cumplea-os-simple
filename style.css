@@ -145,17 +145,33 @@ body {
     100% { background-position: 200% 0; }
 }
 /* Evita el zoom al tocar botones e inputs rápidamente */
+/* --- MEJORAS DE EXPERIENCIA DE USUARIO --- */
+
+/* 1. Evita el zoom automático en móviles y la selección de texto accidental */
 button, 
 .btn, 
 .btn-qty, 
-input {
-    touch-action: manipulation;
-    /* Evita que se seleccione el texto al tocar muchas veces */
-    user-select: none; 
-    -webkit-user-select: none;
+.card, 
+#app {
+    touch-action: manipulation; /* Bloquea el zoom por clics rápidos */
+    user-select: none;           /* Evita resaltar texto */
+    -webkit-user-select: none;   /* Safari/iOS */
+    -moz-user-select: none;      /* Firefox */
+    -ms-user-select: none;       /* IE/Edge */
+    -webkit-tap-highlight-color: transparent; /* Quita el cuadro azul al tocar en Android/iOS */
 }
 
-/* Asegura que los inputs tengan al menos 16px para que iOS no haga zoom */
+/* 2. Permitir selección solo en el input para que puedan escribir su nombre */
 input[type="text"] {
-    font-size: 16px !important;
+    user-select: text !important;
+    -webkit-user-select: text !important;
+    font-size: 16px !important; /* iOS no hace zoom si la fuente es de 16px o más */
+}
+
+/* 3. Mejora visual para los botones de cantidad al ser presionados */
+.btn-qty:active {
+    background-color: var(--purple-primary);
+    color: white;
+    transform: scale(0.9);
+    transition: 0.1s;
 }
