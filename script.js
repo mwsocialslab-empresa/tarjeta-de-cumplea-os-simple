@@ -189,8 +189,8 @@ function startBalloonRain() {
         setTimeout(createOneBalloon, Math.random() * 5000);
     }
     
-    // Seguir creando globos infinitamente cada 600ms
-    setInterval(createOneBalloon, 600);
+    // Seguir creando globos infinitamente cada 100ms
+    setInterval(createOneBalloon, 100);
 }
 
 // Llamar al inicio
