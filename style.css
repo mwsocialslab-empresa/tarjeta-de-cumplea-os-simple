@@ -144,3 +144,18 @@ body {
     0% { background-position: -200% 0; }
     100% { background-position: 200% 0; }
 }
+/* Evita el zoom al tocar botones e inputs rápidamente */
+button, 
+.btn, 
+.btn-qty, 
+input {
+    touch-action: manipulation;
+    /* Evita que se seleccione el texto al tocar muchas veces */
+    user-select: none; 
+    -webkit-user-select: none;
+}
+
+/* Asegura que los inputs tengan al menos 16px para que iOS no haga zoom */
+input[type="text"] {
+    font-size: 16px !important;
+}
