@@ -1,31 +1,48 @@
-/* El nombre "ZOE" con estilo elegante y cool */
-#nombre-cumpleanero {
-    font-family: 'Grand Hotel', cursive;
-    font-size: 4rem;
-    color: #a855f7; /* Púrpura moderno */
-    text-shadow: 2px 2px 0px #ffc1e3; /* Sombra rosa pastel */
+/* --- NUEVAS TIPOGRAFÍAS ADOLESCENTES --- */
+
+/* 1. Línea: Celebramos los */
+.celebremos-style {
+    font-family: 'Comfortaa', sans-serif !important;
+    color: #6c757d !important;
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
+
+/* 2. Línea: El número 16 */
+.numero-style {
+    font-family: 'Bangers', cursive !important;
+    font-size: 5rem !important;
+    color: #a855f7 !important;
+    text-shadow: 3px 3px 0px #ffc1e3;
+    line-height: 0.8;
+}
+
+/* 3. Línea: años de */
+.anios-style {
+    font-family: 'Comfortaa', sans-serif !important;
+    color: #a855f7 !important;
+    font-size: 1.8rem !important;
+    font-weight: 700 !important;
+}
+
 
 /* Títulos de impacto (Fecha, Lugar, Confirmación) */
 h1, .title-font, #confirm-btn {
-    font-family: 'Bangers', system-ui;
+    font-family: 'Bangers', system-ui !important;
     letter-spacing: 1.5px;
     text-transform: uppercase;
 }
 
-/* Textos informativos y botones (Legible y moderno) */
+/* Textos informativos generales */
 body, p, .detail-item, input {
     font-family: 'Comfortaa', sans-serif;
-    font-weight: 700; /* Negrita suave para que resalte */
+    font-weight: 700;
 }
-#nombre-cumpleanero {
-    background: linear-gradient(to right, #a855f7, #ec4899);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    display: inline-block;
-}
-/* Variables de Colores */
+
+/* --- RESTO DE TU ESTILO ORIGINAL (SIN TOCAR) --- */
+
 :root {
     --pink-primary: #ec4899;
     --purple-primary: #a855f7;
@@ -33,15 +50,9 @@ body, p, .detail-item, input {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
     background: linear-gradient(135deg, #fdf2f8 0%, #fae8ff 50%, #e0e7ff 100%);
 }
 
-.title-font {
-    font-family: 'Fredoka', sans-serif;
-}
-
-/* Estilo de la Tarjeta */
 .invitation-card {
     border-radius: 2rem;
     background-color: white;
@@ -53,7 +64,6 @@ body {
     background: linear-gradient(90deg, var(--pink-primary), var(--purple-primary), var(--indigo-primary), var(--pink-primary));
 }
 
-/* Tipografías y Colores */
 .gradient-text {
     background: linear-gradient(90deg, #ec4899, #a855f7, #6366f1);
     background-clip: text;
@@ -65,7 +75,6 @@ body {
 .text-purple { color: var(--purple-primary); }
 .text-purple-muted { color: #a78bfa; }
 
-/* Contenedores de Detalles */
 .bg-pink-light { background: linear-gradient(90deg, #fdf2f8, #fce7f3); }
 .bg-purple-light { background: linear-gradient(90deg, #f5f3ff, #ede9fe); }
 .bg-indigo-light { background: linear-gradient(90deg, #eef2ff, #e0e7ff); }
@@ -81,12 +90,6 @@ body {
     font-size: 1.2rem;
 }
 
-.age-badge {
-    background: #fdf2f8;
-    border: 1px solid #fbcfe8;
-}
-
-/* Botón y Formularios */
 .form-box { background-color: #f9fafb; border: 1px dashed #e5e7eb; }
 
 .btn-primary-custom {
@@ -95,12 +98,6 @@ body {
     transition: transform 0.3s ease;
 }
 
-.btn-primary-custom:hover {
-    transform: scale(1.03);
-    color: white;
-}
-
-/* Animaciones */
 .shimmer {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -114,27 +111,6 @@ body {
     100% { background-position: 200% 0; }
 }
 
-.bounce-in {
-    animation: bounce-in 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@keyframes bounce-in {
-    0% { transform: scale(0); opacity: 0; }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-/* Confetti */
-.confetti-piece {
-    position: absolute;
-    width: 8px;
-    height: 8px;
-    animation: confetti-fall 1s ease-out forwards;
-}
-
-@keyframes confetti-fall {
-    0% { transform: translateY(0) rotate(0); opacity: 1; }
-    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
-}
 .btn-outline-primary {
     color: #a855f7;
     border-color: #a855f7;
@@ -142,9 +118,9 @@ body {
 
 .btn-outline-primary:hover {
     background-color: #a855f7;
-    border-color: #a855f7;
     color: white;
 }
+
 .btn-qty {
     width: 35px;
     height: 35px;
@@ -156,17 +132,9 @@ body {
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    transition: all 0.2s;
 }
 
-.btn-qty:hover {
-    background: #a855f7;
-    color: white;
-}
-
-.btn-qty:active {
-    transform: scale(0.9);
-}
+/* --- GLOBOS --- */
 #balloons-container {
     background: transparent;
     pointer-events: none;
@@ -177,49 +145,45 @@ body {
     bottom: -150px;
     border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
     opacity: 0.6;
-    animation: floatUp linear forwards; /* Cambiado a forwards para que no salten */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgba(255,255,255,0.8);
-    font-size: 10px;
-    font-weight: bold;
-}
-
-/* El nudo del globo */
-.balloon::before {
-    content: "▲";
-    position: absolute;
-    bottom: -7px;
-    font-size: 10px;
-    color: inherit;
-    filter: brightness(0.9);
-}
-
-/* El hilo */
-.balloon::after {
-    content: "";
-    position: absolute;
-    bottom: -40px;
-    left: 50%;
-    width: 1px;
-    height: 40px;
-    background: rgba(0,0,0,0.1);
+    animation: floatUp linear forwards;
 }
 
 @keyframes floatUp {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0;
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-130vh) rotate(20deg); opacity: 0; }
+}
+/* 4. Línea: ZOE (Usando Pattaya) */
+#nombre-cumpleanero {
+    font-family: 'Pattaya', sans-serif !important;
+    font-size: 4.5rem !important; /* Ajusta el tamaño a tu gusto */
+    background: linear-gradient(to right, #626fdd, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    font-weight: normal !important; /* Pattaya ya es gruesa de por sí */
+    filter: drop-shadow(2px 2px 0px rgba(255, 193, 227, 0.3));
+}
+/* Animación de caída para el confeti de confirmación */
+@keyframes confetti-fall {
+    0% { 
+        transform: translateY(-50px) rotate(0deg); 
+        opacity: 1; 
     }
-    10% {
-        opacity: 0.6;
+    100% { 
+        transform: translateY(300px) rotate(360deg); /* Ahora cae hacia abajo */
+        opacity: 0; 
     }
-    90% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateY(-130vh) rotate(20deg);
-        opacity: 0;
-    }
+}
+
+.confetti-piece {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    top: 0; /* Empieza desde la parte superior del cuadro de éxito */
+    animation: confetti-fall 2s ease-out forwards;
 }

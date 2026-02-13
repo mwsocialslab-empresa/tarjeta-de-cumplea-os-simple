@@ -1,5 +1,5 @@
 const defaultConfig = {
-    nombre_cumpleanero: 'ZOE',
+    nombre_cumpleanero: 'Zoe',
     fecha_fiesta: 'Sábado 15 de Julio',
     hora_fiesta: '4:00 PM',
     lugar_fiesta: 'Salón de Fiestas Luna',
