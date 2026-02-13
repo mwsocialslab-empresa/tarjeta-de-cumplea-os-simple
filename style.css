@@ -150,8 +150,23 @@ body {
 /* 1. Evita el zoom automático en móviles y la selección de texto accidental */
 button, 
 .btn, 
-.btn-qty, 
-.card, 
+.btn-qty,
+.btn-primary-custom, 
+.card,
+#confirm-btn {
+    /* Desactiva todos los gestos automáticos del navegador (zoom, scroll interno, etc.) */
+    touch-action: none !important; 
+    
+    /* Evita que el navegador espere 300ms para ver si vas a hacer doble clic */
+    cursor: pointer;
+    
+    /* Evita selección de texto */
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    
+    /* Elimina el zoom visual al tocar rápido en Safari */
+    -webkit-tap-highlight-color: transparent !important;
+}
 #app {
     touch-action: manipulation; /* Bloquea el zoom por clics rápidos */
     user-select: none;           /* Evita resaltar texto */
@@ -174,4 +189,7 @@ input[type="text"] {
     color: white;
     transform: scale(0.9);
     transition: 0.1s;
+}
+.d-flex.align-items-center.justify-content-center.gap-2 {
+    touch-action: none !important;
 }
