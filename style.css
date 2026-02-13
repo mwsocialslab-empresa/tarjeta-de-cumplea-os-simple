@@ -7,10 +7,15 @@
 
 body {
     background: linear-gradient(135deg, #fdf2f8 0%, #fae8ff 50%, #e0e7ff 100%);
-    overflow-x: hidden; /* Evita scroll lateral por los globos */
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    /* Permitir scroll suave en móviles */
+    touch-action: pan-y;
+    -webkit-overflow-scrolling: touch;
 }
 
-/* --- 2. TIPOGRAFÍAS ADOLESCENTES (FRONT) --- */
+/* --- 2. TIPOGRAFÍAS ADOLESCENTES --- */
 
 .celebremos-style {
     font-family: 'Comfortaa', sans-serif !important;
@@ -36,7 +41,7 @@ body {
     font-weight: 700;
 }
 
-/* Solución para Pattaya en Móviles */
+/* Tipografía ZOE (Pattaya) con corrección para móviles */
 #nombre-cumpleanero {
     font-family: 'Pattaya', sans-serif !important;
     font-size: 3.8rem !important;
@@ -57,12 +62,14 @@ body {
     .numero-style { font-size: 4rem !important; }
 }
 
-/* --- 3. DISEÑO DE TARJETA Y DETALLES --- */
+/* --- 3. DISEÑO DE TARJETA --- */
 
 .invitation-card {
     border-radius: 2rem;
     background-color: white;
     box-shadow: 0 20px 60px rgba(236, 72, 153, 0.2);
+    /* Permitir scroll sobre la tarjeta */
+    touch-action: pan-y !important;
 }
 
 .top-bar, .bottom-bar {
@@ -98,9 +105,14 @@ body {
     font-weight: bold;
 }
 
+.btn-qty:active {
+    background-color: var(--purple-primary);
+    color: white;
+    transform: scale(0.9);
+}
+
 /* --- 5. ANIMACIONES: GLOBOS Y CONFETI --- */
 
-/* Globos de fondo */
 .balloon {
     position: absolute;
     bottom: -150px;
@@ -115,8 +127,7 @@ body {
     100% { transform: translateY(-130vh) rotate(20deg); opacity: 0; }
 }
 
-/* Confeti de Éxito (Caída hacia abajo) */
-.success-box { overflow: hidden; } /* Evita que el confeti se amontone arriba */
+.success-box { overflow: hidden; position: relative; }
 
 @keyframes confetti-fall {
     0% { transform: translateY(-50px) rotate(0deg); opacity: 1; }
@@ -131,7 +142,6 @@ body {
     animation: confetti-fall 2.5s ease-out forwards;
 }
 
-/* Shimmer del botón */
 .shimmer {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -144,52 +154,60 @@ body {
     0% { background-position: -200% 0; }
     100% { background-position: 200% 0; }
 }
-/* Evita el zoom al tocar botones e inputs rápidamente */
-/* --- MEJORAS DE EXPERIENCIA DE USUARIO --- */
 
-/* 1. Evita el zoom automático en móviles y la selección de texto accidental */
+/* --- 6. MEJORAS DE EXPERIENCIA (ZOOM Y SCROLL) --- */
+
+/* Bloqueo de zoom en botones sin romper el scroll de la página */
 button, 
 .btn, 
 .btn-qty,
 .btn-primary-custom, 
-.card,
 #confirm-btn {
-    /* Desactiva todos los gestos automáticos del navegador (zoom, scroll interno, etc.) */
-    touch-action: none !important; 
-    
-    /* Evita que el navegador espere 300ms para ver si vas a hacer doble clic */
+    touch-action: manipulation !important; 
     cursor: pointer;
-    
-    /* Evita selección de texto */
     user-select: none !important;
     -webkit-user-select: none !important;
-    
-    /* Elimina el zoom visual al tocar rápido en Safari */
     -webkit-tap-highlight-color: transparent !important;
 }
+
 #app {
-    touch-action: manipulation; /* Bloquea el zoom por clics rápidos */
-    user-select: none;           /* Evita resaltar texto */
-    -webkit-user-select: none;   /* Safari/iOS */
-    -moz-user-select: none;      /* Firefox */
-    -ms-user-select: none;       /* IE/Edge */
-    -webkit-tap-highlight-color: transparent; /* Quita el cuadro azul al tocar en Android/iOS */
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    touch-action: pan-y !important; /* PERMITE SCROLL VERTICAL */
+    user-select: none;
+    -webkit-user-select: none;
 }
 
-/* 2. Permitir selección solo en el input para que puedan escribir su nombre */
+/* Liberar scroll en los contenedores de botones */
+.d-flex.align-items-center.justify-content-center.gap-2 {
+    touch-action: pan-y !important;
+}
+
+/* Input para nombre */
 input[type="text"] {
     user-select: text !important;
     -webkit-user-select: text !important;
-    font-size: 16px !important; /* iOS no hace zoom si la fuente es de 16px o más */
+    font-size: 16px !important;
+    touch-action: auto !important;
 }
 
-/* 3. Mejora visual para los botones de cantidad al ser presionados */
-.btn-qty:active {
-    background-color: var(--purple-primary);
-    color: white;
-    transform: scale(0.9);
-    transition: 0.1s;
+/* Contenedores fantasmas (no bloquean el tacto) */
+#balloons-container, 
+#confetti-container {
+    pointer-events: none !important;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
 }
-.d-flex.align-items-center.justify-content-center.gap-2 {
-    touch-action: none !important;
+
+#success-container {
+    pointer-events: none; 
+}
+
+#success-container:not(.d-none) {
+    pointer-events: auto;
 }

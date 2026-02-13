@@ -204,7 +204,7 @@ function startBalloonRain() {
 document.addEventListener('DOMContentLoaded', () => {
     startBalloonRain();
 });
-
+let lastTouchEnd = 0;
 // Evita el zoom por doble tap pero PERMITE el scroll
 document.addEventListener('touchend', function (event) {
     let now = (new Date()).getTime();

@@ -2,15 +2,17 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Invitación de Cumpleaños</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comfortaa:wght@400;700&family=Pattaya&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no">
+    <title>Invitación de Cumpleaños - Zoe</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comfortaa:wght@400;700&family=Pattaya&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body >
-<div id="balloons-container" class="position-fixed top-0 start-0 w-100 h-100 overflow-hidden" style="z-index: -1; pointer-events: none;"></div>
+<body>
+    <div id="balloons-container" class="position-fixed top-0 start-0 w-100 h-100 overflow-hidden" style="z-index: -1; pointer-events: none;"></div>
+
     <div id="app" class="min-vh-100 d-flex align-items-center justify-content-center p-3">
         <div class="container">
             <div class="row justify-content-center">
@@ -19,15 +21,14 @@
                     <div class="card invitation-card border-0 overflow-hidden shadow-lg position-relative">
                         <div class="top-bar"></div>
                         <div class="card-body px-4 pb-4">
-                           <div class="text-center mb-4 d-flex flex-column align-items-center">
+                            
+                            <div class="text-center mb-4 d-flex flex-column align-items-center">
                                 <p class="celebremos-style mb-0">Celebramos los</p>
-                                
                                 <div class="d-flex align-items-center gap-2">
-                                    <span class="numero-style line-height-1">16</span>
-                                    <span class="anios-style">años de</span><h2 id="nombre-cumpleanero">Zoe</h2>
+                                    <span class="numero-style">16</span>
+                                    <span class="anios-style">años de</span>
+                                    <h2 id="nombre-cumpleanero">Zoe</h2>
                                 </div>
-
-                                
                             </div>
 
                             <div class="details-container d-grid gap-3 mb-4">
@@ -54,78 +55,68 @@
                                         <p id="lugar" class="m-0 fw-bold">QUINTA: EL BOSQUE ENCANTADO</p>
                                         <p id="direccion" class="m-0 small text-muted">Calle: Manuel de la Falla 1412</p>
                                     </div>
-                                    
                                 </div>
+                                
                                 <div class="mt-3 text-center">
-                                        <a href="https://maps.app.goo.gl/6czMnXNAH547azfb6" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-3 shadow-sm">
-                                            📍 Ver ubicación en Google Maps
-                                        </a>
-                                    </div>
+                                    <a href="https://www.google.com/maps" target="_blank" class="btn btn-outline-primary btn-sm rounded-pill px-3 shadow-sm">
+                                        📍 Ver ubicación en Google Maps
+                                    </a>
+                                </div>
                             </div>
 
                             <div id="confirmation-section">
-    <div id="form-container" class="form-box p-4 rounded-4 text-center">
-        <p class="small text-muted mb-3">¿Podrás asistir? ¡Confirma tu asistencia!</p>
-        
-        <input type="text" id="guest-name" class="form-control form-control-lg border-2 mb-4 text-center" placeholder="Tu nombre">
-        
-        <p class="fw-bold text-muted small mb-3">Somos en Total:</p>
-        
-        <div class="row g-3 mb-4">
-            <div class="col-6">
-                <label class="small text-muted d-block mb-2">Adultos</label>
-                <div class="d-flex align-items-center justify-content-center gap-2">
-                    <button type="button" onclick="changeQty('adults', -1)" class="btn btn-qty">-</button>
-                    <span id="qty-adults" class="fw-bold fs-5" style="min-width: 20px;">0</span>
-                    <button type="button" onclick="changeQty('adults', 1)" class="btn btn-qty">+</button>
-                </div>
-            </div>
-            <div class="col-6">
-                <label class="small text-muted d-block mb-2">Menores</label>
-                <div class="d-flex align-items-center justify-content-center gap-2">
-                    <button type="button" onclick="changeQty('kids', -1)" class="btn btn-qty">-</button>
-                    <span id="qty-kids" class="fw-bold fs-5" style="min-width: 20px;">0</span>
-                    <button type="button" onclick="changeQty('kids', 1)" class="btn btn-qty">+</button>
-                </div>
-            </div>
-        </div>
+                                <div id="form-container" class="form-box p-4 rounded-4 text-center">
+                                    <p class="small text-muted mb-3">¿Podrás asistir? ¡Confirma tu asistencia!</p>
+                                    <input type="text" id="guest-name" class="form-control form-control-lg border-2 mb-4 text-center" placeholder="Tu nombre">
+                                    
+                                    <p class="fw-bold text-muted small mb-3">Somos en Total:</p>
+                                    
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-6">
+                                            <label class="small text-muted d-block mb-2">Adultos</label>
+                                            <div class="d-flex align-items-center justify-content-center gap-2">
+                                                <button type="button" onclick="changeQty('adults', -1)" class="btn btn-qty">-</button>
+                                                <span id="qty-adults" class="fw-bold fs-5" style="min-width: 20px;">0</span>
+                                                <button type="button" onclick="changeQty('adults', 1)" class="btn btn-qty">+</button>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <label class="small text-muted d-block mb-2">Menores</label>
+                                            <div class="d-flex align-items-center justify-content-center gap-2">
+                                                <button type="button" onclick="changeQty('kids', -1)" class="btn btn-qty">-</button>
+                                                <span id="qty-kids" class="fw-bold fs-5" style="min-width: 20px;">0</span>
+                                                <button type="button" onclick="changeQty('kids', 1)" class="btn btn-qty">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
 
-        <button id="confirm-btn" onclick="confirmAttendance()" class="btn btn-primary-custom w-100 py-3 fw-bold position-relative overflow-hidden border-0">
-            <span class="position-relative z-index-1">¡Confirmar Asistencia! 🎉</span>
-            <div class="shimmer"></div>
-        </button>
-        
-                <p id="error-message" class="text-danger small mt-2 d-none">Por favor ingresa tu nombre</p>
-            </div>
+                                    <button id="confirm-btn" onclick="confirmAttendance()" class="btn btn-primary-custom w-100 py-3 fw-bold position-relative overflow-hidden border-0">
+                                        <span class="position-relative z-index-1">¡Confirmar Asistencia! 🎉</span>
+                                        <div class="shimmer"></div>
+                                    </button>
+                                    <p id="error-message" class="text-danger small mt-2 d-none">Por favor ingresa tu nombre</p>
+                                </div>
 
-            <div id="success-container" class="d-none">
-                <div class="success-box p-4 rounded-4 text-center position-relative">
-                    <div id="confetti-container" class="position-absolute top-0 start-0 w-100 h-100 overflow-hidden pointer-events-none"></div>
-                    <div class="display-4 mb-2 bounce-in">🎊</div>
-                    <h3 class="title-font fw-bold text-success">¡Confirmado!</h3>
-                    <p class="mb-0">Gracias <span id="confirmed-name" class="fw-bold text-purple"></span></p>
-                    <p id="summary-msg" class="small text-muted mt-2"></p>
-                    <p class="small text-muted">¡Te esperamos en la fiesta!</p>
-                </div>
-            </div>
-        </div>
-
-                            <div id="guests-counter" class="mt-3 text-center d-none">
-                                <small class="text-muted"><span id="guest-count">0</span> personas confirmadas</small>
+                                <div id="success-container" class="d-none">
+                                    <div class="success-box p-4 rounded-4 text-center position-relative overflow-hidden">
+                                        <div id="confetti-container" class="position-absolute top-0 start-0 w-100 h-100 pointer-events-none"></div>
+                                        <div class="display-4 mb-2 bounce-in">🎊</div>
+                                        <h3 class="title-font fw-bold text-success">¡Confirmado!</h3>
+                                        <p class="mb-0">Gracias <span id="confirmed-name" class="fw-bold text-purple"></span></p>
+                                        <p class="small text-muted">¡Te esperamos en la fiesta!</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
 
+                        </div>
                         <div class="bottom-bar"></div>
                     </div>
-                    
                     <p class="text-center mt-4 text-purple-muted fw-medium">¡Va a ser increíble! 🌟</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <script src="/_sdk/element_sdk.js"></script>
-    <script src="/_sdk/data_sdk.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
